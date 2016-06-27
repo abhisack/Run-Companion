@@ -55,6 +55,7 @@ body {
 /**'calculateDistance' function from 
 this post- http://www.html5rocks.com/en/tutorials/geolocation/trip_meter/
 **/
+
 (function() {
   
 function calculateDistance(lat1, lon1, lat2, lon2) {
@@ -82,29 +83,20 @@ var watcher,
     distance,
     distanceEl= $(".distance");
 
+
+  
 function recordDistance() {
-  distance = 0;
-  distanceEl.textContent = distance;
-  
-  startWatching(getInitCoords());
-}
-  
-function getInitCoords() {
-  var _data;
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(data) {
-      
-      console.log("data", data);
-      _data = data.coords;
+    
+     distance = 0;
+     distanceEl.textContent = distance;
+     startWatching(data.coords);
       
     }, function(err) {
       console.log("some error occured", err);
     });
   }
-  
-  console.log("_data", _data);
-  
-  return _data;
   
 }
   
