@@ -1,4 +1,6 @@
+<!DOCTYPE html>
 <html><head>
+<meta name="viewport" content="width = device-width, initial-scale = 1"/>
 <style>
 body {
   font-family: sans-serif;
@@ -6,6 +8,11 @@ body {
   flex-direction: column;
   margin: 0;
 }
+    
+    html,
+    body {
+        height: 100%;
+    }
 
 .distance-info {
   margin: 20vh 0 0;
@@ -124,7 +131,7 @@ function recordDistance() {
   
   $(".btn-reset").addEventListener("click", recordDistance, false);
   
-
+		
 })();
 
 
