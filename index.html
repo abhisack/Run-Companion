@@ -94,13 +94,18 @@ function getInitCoords() {
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(data) {
       
+      console.log("data", data);
       _data = data.coords;
       
     }, function(err) {
       console.log("some error occured", err);
     });
   }
+  
+  console.log("_data", _data);
+  
   return _data;
+  
 }
   
   function startWatching(initCoords) {
