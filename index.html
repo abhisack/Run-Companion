@@ -1,7 +1,12 @@
 <!DOCTYPE html>
-<html><head>
+<html>
+    
+<head>
+    
 <meta name="viewport" content="width = device-width, initial-scale = 1"/>
+    
 <style>
+    
 body {
   font-family: sans-serif;
   display: flex;
@@ -43,6 +48,11 @@ body {
   opacity: 0.7;
   
 }
+    
+.log {
+    padding: 2em 1em;
+    color: tomato;
+}
 
 @media (min-width: 800px) {
   .distance-info {
@@ -52,6 +62,9 @@ body {
 </style>
 </head>
 <body>
+
+<p class="log"></p>
+    
 <h2 class="distance-info">
  You've travelled
   <span class="distance">40</span> metres
@@ -85,6 +98,13 @@ Number.prototype.toRad = function() {
 function $(sel) {
   return document.querySelector(sel);
 }
+    
+function updateLog() {
+    for(var i = 0; i < arguments.length; i++) {
+        $(".log").textContent += arguments[i];
+    }
+}
+    
 
 var watcher,
     distance,
@@ -96,12 +116,14 @@ function recordDistance() {
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(data) {
     
+     updateLog("getCurentPosition data " , data);
+        
      distance = 0;
      distanceEl.textContent = distance;
      startWatching(data.coords);
       
     }, function(err) {
-      console.log("some error occured", err);
+      updateLog("some error occured " , err);
     });
   }
   
@@ -117,12 +139,14 @@ function recordDistance() {
       var cLat= data.coords.latitude,
           cLong= data.coords.longitude;
       
+        updateLog("watchPosition data " , data);
+        
       distance = calculateDistance(initCoords.latitude, initCoords.longitude, cLat, cLong);
       
       distanceEl.textContent = distance;
       
     }, (err) => {
-      console.log("Some error occured in 'navigator.geolocation.watchPosition' method", err);
+          updateLog("Some error occured in 'navigator.geolocation.watchPosition' method " , err);
     });
     
   }
