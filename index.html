@@ -71,6 +71,8 @@ body {
 </h2>
 
 <button class="btn-reset">START OVER</button>
+    
+    
 <script>
 /**'calculateDistance' function from 
 this post- http://www.html5rocks.com/en/tutorials/geolocation/trip_meter/
@@ -101,10 +103,11 @@ function $(sel) {
     
 function updateLog() {
     for(var i = 0; i < arguments.length; i++) {
-        $(".log").textContent += arguments[i];
+        $(".log").textContent += arguments[i] + " ";
     }
 }
     
+ updateLog("Second Log");
 
 var watcher,
     distance,
